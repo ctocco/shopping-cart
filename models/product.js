@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose;
+const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
   name: {
@@ -8,14 +8,14 @@ const ProductSchema = new Schema({
   },
   description: {
     type: String,
-    maxLength: 200
+    maxLength: 500
   },
   imageurl: {
     type: String,
     maxlength: 40
   },
   price: {
-    type: number,
+    type: Number,
     maxlength: 40
   }
 });
