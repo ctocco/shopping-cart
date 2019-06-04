@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const apiRouter = express.Router({ strict: true });
+const sendJsonResp = require("../helpers/sendJsonResponse");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+const { getAllProducts } = require("../controllers/product");
+
+const apiRoutes = {
+  getAllProducts: "/products",
+  getProductsById: "/products/:id"
+};
+
+apiRouter.get("/", (req, res) => {
+  res.json({ availableRoutes: apiRoutes });
 });
+// apiRouter.use(sendJsonResp);
+apiRouter.get(apiRoutes.getAllProducts, getAllProducts);
 
-module.exports = router;
+module.exports = apiRouter;
