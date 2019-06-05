@@ -6,7 +6,9 @@ const { getAllProducts } = require("../controllers/product");
 
 const apiRoutes = {
   getAllProducts: "/products",
-  getProductsById: "/products/:id"
+  addProduct: "/add/:id",
+  removeProduct: "/remove/:id",
+  removeAllProduct: "remove-all/:id"
 };
 
 apiRouter.get("/", (req, res) => {
