@@ -5,7 +5,6 @@ var app = express();
 
 module.exports = {
   getAllProducts: async (req, res, next) => {
-    console.log(req.session);
     try {
       const productList = await Product.find();
       res.json(productList);
@@ -13,7 +12,13 @@ module.exports = {
       error.message = noProducts;
       next(error);
     }
+  },
+  getProductById: async (req, res, next) => {
+    try {
+      const product = await Product.find(_id);
+      res.json(product);
+    } catch (error) {
+      error.message = noProducts;
+    }
   }
 };
-
-
