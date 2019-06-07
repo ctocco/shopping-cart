@@ -57,6 +57,7 @@ class Cart {
     this.items = {};
   }
 }
+
 const shoppingCart = new Cart();
 
 shoppingCart.add(cart["5cf502eddbe9a6104529cc88"]);
@@ -66,3 +67,5 @@ shoppingCart.add(cart["5cf502eddbsdfasdf29cc88"]);
 
 console.log(shoppingCart.totalQty);
 console.log(shoppingCart.totalPrice);
+
+module.exports = Cart;

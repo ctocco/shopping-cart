@@ -1,6 +1,7 @@
 const Product = require("../models/product");
 const mongoose = require("mongoose");
 const express = require("express");
+const shoppingCart = require("../models/cart");
 var app = express();
 
 module.exports = {
