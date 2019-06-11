@@ -3,6 +3,7 @@ const apiRouter = express.Router({ strict: true });
 const sendJsonResp = require("../helpers/sendJsonResponse");
 
 const { getAllProducts } = require("../controllers/product");
+const { addProduct } = require("../controllers/cart");
 
 const apiRoutes = {
   getAllProducts: "/products",
@@ -18,5 +19,7 @@ apiRouter.get("/", (req, res) => {
 // apiRouter.use(sendJsonResp);
 apiRouter.get(apiRoutes.getAllProducts, getAllProducts);
 apiRouter.get(apiRoutes.getProductById, getAllProducts);
+
+apiRouter.get("/cart/add/:id", addProduct);
 
 module.exports = apiRouter;

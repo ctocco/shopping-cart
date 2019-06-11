@@ -9,6 +9,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const app = express();
 const secret = require("./config/environment");
+const Cart = require("./models/cart");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -24,11 +25,16 @@ app.use(
     secret: secret,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, maxAge: 1000 * 60 * 60 * 24 }
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
   })
 );
 
-app.use(cookieParser());
+app.use((req, res, next) => {
+  console.log("Init cart: ", req.session.cart);
+  req.session.cart = new Cart(req.session.cart);
+  next();
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
